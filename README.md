@@ -72,3 +72,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 Dependencies:
 
 - React select (https://www.npmjs.com/package/react-select)
+- FontAwesome
