@@ -1,4 +1,8 @@
 import AssignmentContainer from "../assignment-container/assignment-container.component";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSort } from "@fortawesome/free-solid-svg-icons";
+
+import "./assignments-view.styles.css";
 import Select from "react-select";
 import { useState, useEffect } from "react";
 
@@ -20,7 +24,7 @@ const AssignmentsViewContainer = () => {
       gitHubLink: "random link",
       description: "some random long description",
       delivered: false,
-      color: "#00B76A",
+      color: "red",
       id: "1",
     },
     {
@@ -32,7 +36,7 @@ const AssignmentsViewContainer = () => {
       gitHubLink: "random link",
       description: "some random long description",
       delivered: true,
-      color: "#00B76A",
+      color: "blue",
       id: "2",
     },
     {
@@ -44,7 +48,7 @@ const AssignmentsViewContainer = () => {
       gitHubLink: "random link",
       description: "some random long description",
       delivered: true,
-      color: "#00B76A",
+      color: "green",
       id: "3",
     },
   ]);
@@ -77,22 +81,30 @@ const AssignmentsViewContainer = () => {
   }, [selectedOption]);
 
   return (
-    <div className="assignments-view-container">
+    <div>
       <div className="assignments-view-header">
         <h1>Upcoming assignments</h1>
-        {/* Add sort icon here */}
-        <Select
-          defaultValue={selectedOption}
-          onChange={(event) => setSelectedOption(event)}
-          options={options}
-        />
+        <div className="header-right-icons">
+          <FontAwesomeIcon icon={faSort} size="xl" className="sort-icon" />
+          <Select
+            defaultValue={selectedOption}
+            onChange={(event) => setSelectedOption(event)}
+            options={options}
+            className="sort-select"
+          />
+        </div>
       </div>
-      <div className="assignments-view">
-        {filteredAssignments.map((assignment) => {
-          return (
-            <AssignmentContainer assignment={assignment} key={assignment.id} />
-          );
-        })}
+      <div className="assignments-view-container">
+        <div className="assignments-view">
+          {filteredAssignments.map((assignment) => {
+            return (
+              <AssignmentContainer
+                assignment={assignment}
+                key={assignment.id}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
