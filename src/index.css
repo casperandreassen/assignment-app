@@ -29,3 +29,12 @@ code {
   transition: 0.1s;
   cursor: pointer;
 }
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover {
+  cursor: pointer;
+}
